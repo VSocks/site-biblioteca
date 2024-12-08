@@ -30,24 +30,46 @@ VALUES
 INSERT INTO Reservas (LivroID, ClienteID, DataReserva)
 VALUES
 (2, 1, '2024-11-12');
+(6, 1, '2024-11-17'),
+(4, 3, '2024-11-18');
 
--- Atualizar o telefone de um cliente
-UPDATE Clientes SET Telefone = '999888777' WHERE ClienteID = 1;
+-- Atualizar dados de clientes
+UPDATE Clientes SET Telefone = '444333222' WHERE Nome = 'Lucas Pereira';
+UPDATE Clientes SET Senha = 'newpassword2024' WHERE Email = 'isabela.andrade@email.com';
 
--- Atualizar o número de livros disponíveis
-UPDATE Livros SET Quantidade = Quantidade - 1 WHERE LivroID = 1 AND Quantidade > 0;
+-- Atualizar dados de funcionários
+UPDATE Funcionarios SET Cargo = 'Supervisor' WHERE Nome = 'Marcos Souza';
+UPDATE Funcionarios SET Telefone = '999111888' WHERE Email = 'juliana.mendes@email.com';
 
--- Atualizar a data de devolução de um empréstimo
-UPDATE Emprestimos SET DataDevolucao = '2024-11-20' WHERE EmprestimoID = 1;
+-- Atualizar dados de livros
+UPDATE Livros SET Quantidade = Quantidade + 2 WHERE Titulo = '1984';
+UPDATE Livros SET Editora = 'Companhia das Letras' WHERE Autor = 'Machado de Assis';
 
--- Atualizar o cargo de um funcionário
-UPDATE Funcionarios SET Cargo = 'Gerente' WHERE ID = 1;
+-- Atualizar dados de empréstimos
+UPDATE Emprestimos SET DataDevolucao = '2024-12-10' WHERE EmprestimoID = 3;
+UPDATE Emprestimos SET DataEmprestimo = '2024-11-12' WHERE LivroID = 5;
 
--- Remover uma reserva
-DELETE FROM Reservas WHERE ReservaID = 1;
+-- Atualizar dados de reservas
+UPDATE Reservas SET DataReserva = '2024-11-19' WHERE ReservaID = 2;
+UPDATE Reservas SET LivroID = 2 WHERE ReservaID = 3;
 
--- Remover um empréstimo
-DELETE FROM Emprestimos WHERE EmprestimoID = 1;
+-- Remover clientes
+DELETE FROM Clientes WHERE ClienteID = 4;
+DELETE FROM Clientes WHERE Nome = 'Lucas Pereira';
 
--- Remover um livro
-DELETE FROM Livros WHERE LivroID = 4;
+-- Remover funcionários
+DELETE FROM Funcionarios WHERE ID = 3;
+DELETE FROM Funcionarios WHERE Nome = 'Juliana Mendes';
+
+-- Remover livros
+DELETE FROM Livros WHERE LivroID = 5;
+DELETE FROM Livros WHERE Titulo = 'A Revolução dos Bichos';
+
+-- Remover empréstimos
+DELETE FROM Emprestimos WHERE EmprestimoID = 2;
+DELETE FROM Emprestimos WHERE DataDevolucao = '2024-12-05';
+
+-- Remover reservas
+DELETE FROM Reservas WHERE ReservaID = 2;
+DELETE FROM Reservas WHERE LivroID = 6;
+
