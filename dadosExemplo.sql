@@ -288,3 +288,47 @@ WHERE Quantidade > ALL (
 SELECT * 
 FROM Reservas
 WHERE DataReserva < ALL (SELECT DataDevolucao FROM Emprestimos);
+
+-- 1. Encontrar clientes que possuem reservas
+SELECT Nome 
+FROM Clientes c
+WHERE EXISTS (
+    SELECT 1
+    FROM Reservas r
+    WHERE r.ClienteID = c.ClienteID
+);
+
+-- 2. Verificar se existem livros com menos de 2 unidades disponíveis
+SELECT 'Existem livros com menos de 2 unidades' AS Resultado
+WHERE EXISTS (
+    SELECT 1
+    FROM Livros
+    WHERE Quantidade < 2
+);
+
+-- 3. Listar funcionários que registraram empréstimos
+SELECT Nome 
+FROM Funcionarios f
+WHERE EXISTS (
+    SELECT 1 
+    FROM Emprestimos e
+    WHERE e.ClienteID = f.ID
+);
+
+-- 4. Mostrar livros emprestados que não foram devolvidos
+SELECT Titulo 
+FROM Livros l
+WHERE EXISTS (
+    SELECT 1 
+    FROM Emprestimos e
+    WHERE e.LivroID = l.LivroID AND e.DataDevolucao IS NULL
+);
+
+-- 5. Encontrar clientes com reservas feitas após 2024-11-10
+SELECT Nome
+FROM Clientes c
+WHERE EXISTS (
+    SELECT 1
+    FROM Reservas r
+    WHERE r.ClienteID = c.ClienteID AND r.DataReserva > '2024-11-10'
+);
