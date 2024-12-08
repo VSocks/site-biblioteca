@@ -114,3 +114,25 @@ WHERE LivroID IN (
     FROM Reservas
 ) AND Quantidade < 3;
 
+-- 1. Encontrar clientes cujo email termina em "@email.com"
+SELECT Nome, Email 
+FROM Clientes
+WHERE Email LIKE '%@email.com';
+
+-- 2. Retornar o domínio do email dos funcionários
+SELECT SUBSTRING_INDEX(Email, '@', -1) AS Dominio
+FROM Funcionarios;
+
+-- 3. Concatenar nome e cargo dos funcionários
+SELECT CONCAT(Nome, ' - ', Cargo) AS Descricao
+FROM Funcionarios;
+
+-- 4. Padronizar títulos dos livros com letras maiúsculas
+SELECT UPPER(Titulo) AS TituloMaiusculo
+FROM Livros;
+
+-- 5. Encontrar funcionários cujo nome começa com "J"
+SELECT Nome
+FROM Funcionarios
+WHERE Nome LIKE 'J%';
+
