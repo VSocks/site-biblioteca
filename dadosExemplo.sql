@@ -136,3 +136,35 @@ SELECT Nome
 FROM Funcionarios
 WHERE Nome LIKE 'J%';
 
+-- 1. Contar o número total de livros emprestados por cliente
+SELECT ClienteID, COUNT(*) AS TotalEmprestimos
+FROM Emprestimos
+GROUP BY ClienteID;
+
+-- 2. Exibir o autor com mais livros disponíveis
+SELECT Autor, SUM(Quantidade) AS TotalDisponivel
+FROM Livros
+GROUP BY Autor
+ORDER BY TotalDisponivel DESC
+LIMIT 1;
+
+-- 3. Mostrar a média de livros emprestados por cliente
+SELECT AVG(Total) AS MediaEmprestimos
+FROM (
+    SELECT COUNT(*) AS Total 
+    FROM Emprestimos
+    GROUP BY ClienteID
+) SubQuery;
+
+-- 4. Listar gêneros de livros com mais de 5 unidades no total
+SELECT Genero, SUM(Quantidade) AS TotalUnidades
+FROM Livros
+GROUP BY Genero
+HAVING SUM(Quantidade) > 5;
+
+-- 5. Exibir clientes que possuem mais de 2 reservas
+SELECT ClienteID, COUNT(*) AS TotalReservas
+FROM Reservas
+GROUP BY ClienteID
+HAVING COUNT(*) > 2;
+
