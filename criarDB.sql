@@ -40,6 +40,10 @@ CREATE TABLE Emprestimos (
     ClienteID INT,
     DataEmprestimo DATE,
     DataDevolucao DATE,
-    FOREIGN KEY (LivroID) REFERENCES Livros(LivroID),
+    FOREIGN KEY (LivroID) REFERENCES Livros(LivroID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
     FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
