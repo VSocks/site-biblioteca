@@ -193,3 +193,32 @@ SELECT *
 FROM Reservas
 ORDER BY DataReserva, ClienteID;
 
+-- 1. União entre clientes que fizeram reservas e clientes que pegaram empréstimos
+SELECT ClienteID FROM Reservas
+UNION
+SELECT ClienteID FROM Emprestimos;
+
+-- 2. Interseção de clientes que têm reservas e empréstimos simultaneamente
+SELECT ClienteID FROM Reservas
+INTERSECT
+SELECT ClienteID FROM Emprestimos;
+
+-- 3. Diferença entre livros emprestados e livros reservados
+SELECT LivroID FROM Emprestimos
+EXCEPT
+SELECT LivroID FROM Reservas;
+
+-- 4. União de autores de livros emprestados e reservados
+SELECT DISTINCT Autor 
+FROM Livros 
+WHERE LivroID IN (SELECT LivroID FROM Emprestimos)
+UNION
+SELECT DISTINCT Autor 
+FROM Livros 
+WHERE LivroID IN (SELECT LivroID FROM Reservas);
+
+-- 5. Interseção de livros emprestados e livros disponíveis para reserva
+SELECT LivroID FROM Emprestimos
+INTERSECT
+SELECT LivroID FROM Livros WHERE Quantidade > 0;
+
