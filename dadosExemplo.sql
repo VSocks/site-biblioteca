@@ -222,3 +222,29 @@ SELECT LivroID FROM Emprestimos
 INTERSECT
 SELECT LivroID FROM Livros WHERE Quantidade > 0;
 
+-- 1. Listar reservas com dados de clientes e livros
+SELECT r.DataReserva, c.Nome AS Cliente, l.Titulo AS Livro
+FROM Reservas r
+JOIN Clientes c ON r.ClienteID = c.ClienteID
+JOIN Livros l ON r.LivroID = l.LivroID;
+
+-- 2. Mostrar funcionários que possuem empréstimos associados
+SELECT DISTINCT f.Nome AS Funcionario, e.DataEmprestimo
+FROM Funcionarios f
+JOIN Emprestimos e ON f.ID = e.ClienteID;
+
+-- 3. Listar autores de livros emprestados
+SELECT DISTINCT l.Autor
+FROM Livros l
+JOIN Emprestimos e ON l.LivroID = e.LivroID;
+
+-- 4. Obter todos os empréstimos com dados do cliente e do livro
+SELECT e.DataEmprestimo, c.Nome AS Cliente, l.Titulo AS Livro
+FROM Emprestimos e
+JOIN Clientes c ON e.ClienteID = c.ClienteID
+JOIN Livros l ON e.LivroID = l.LivroID;
+
+-- 5. Listar títulos de livros reservados e seus autores
+SELECT l.Titulo, l.Autor
+FROM Reservas r
+JOIN Livros l ON r.LivroID = l.LivroID;
