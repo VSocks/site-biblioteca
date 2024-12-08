@@ -31,12 +31,12 @@ app.post('/cadastro', async (req, res) => {
 });
 
 // Rota para renderizar a página de cadastro de clientes
-app.get('/cadastro_cliente', (req, res) => {
-  res.sendFile(__dirname + '/views/cadastro_cliente.html');
+app.get('/cadastroCliente', (req, res) => {
+  res.sendFile(__dirname + '/views/cadastroCliente.html');
 });
 
 // Rota para processar o cadastro de clientes
-app.post('/cadastro_cliente', async (req, res) => {
+app.post('/cadastroCliente', async (req, res) => {
   const { nome, telefone, email, senha } = req.body;
 
   // Criptografar a senha do cliente
