@@ -168,3 +168,28 @@ FROM Reservas
 GROUP BY ClienteID
 HAVING COUNT(*) > 2;
 
+-- 1. Ordenar livros por quantidade disponível em ordem decrescente
+SELECT Titulo, Quantidade
+FROM Livros
+ORDER BY Quantidade DESC;
+
+-- 2. Ordenar clientes pelo nome em ordem alfabética
+SELECT Nome
+FROM Clientes
+ORDER BY Nome;
+
+-- 3. Ordenar empréstimos por data de devolução (mais antigos primeiro)
+SELECT * 
+FROM Emprestimos
+ORDER BY DataDevolucao ASC;
+
+-- 4. Ordenar funcionários pelo cargo e, em seguida, pelo nome
+SELECT Nome, Cargo
+FROM Funcionarios
+ORDER BY Cargo, Nome;
+
+-- 5. Ordenar reservas por data e cliente
+SELECT * 
+FROM Reservas
+ORDER BY DataReserva, ClienteID;
+
