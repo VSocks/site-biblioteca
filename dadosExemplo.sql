@@ -248,3 +248,43 @@ JOIN Livros l ON e.LivroID = l.LivroID;
 SELECT l.Titulo, l.Autor
 FROM Reservas r
 JOIN Livros l ON r.LivroID = l.LivroID;
+
+-- 1. Encontrar livros com quantidade maior que qualquer um dos livros reservados
+SELECT Titulo 
+FROM Livros 
+WHERE Quantidade > ANY (
+    SELECT Quantidade 
+    FROM Livros 
+    WHERE LivroID IN (SELECT LivroID FROM Reservas)
+);
+
+-- 2. Listar funcionários que não têm cargos iguais a qualquer outro funcionário
+SELECT Nome 
+FROM Funcionarios
+WHERE Cargo <> ALL (
+    SELECT Cargo
+    FROM Funcionarios
+);
+
+-- 3. Encontrar clientes com reservas posteriores a qualquer data de empréstimo
+SELECT Nome 
+FROM Clientes
+WHERE ClienteID IN (
+    SELECT ClienteID 
+    FROM Reservas 
+    WHERE DataReserva > ANY (SELECT DataEmprestimo FROM Emprestimos)
+);
+
+-- 4. Exibir livros com quantidade maior que a de todos os livros emprestados
+SELECT Titulo
+FROM Livros
+WHERE Quantidade > ALL (
+    SELECT Quantidade 
+    FROM Livros 
+    WHERE LivroID IN (SELECT LivroID FROM Emprestimos)
+);
+
+-- 5. Mostrar reservas feitas antes de todas as datas de devolução
+SELECT * 
+FROM Reservas
+WHERE DataReserva < ALL (SELECT DataDevolucao FROM Emprestimos);
