@@ -47,3 +47,16 @@ CREATE TABLE Emprestimos (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+CREATE TABLE Reservas (
+    ReservaID INT AUTO_INCREMENT PRIMARY KEY,
+    LivroID INT NOT NULL,
+    ClienteID INT NOT NULL,
+    DataReserva DATE NOT NULL,
+    FOREIGN KEY (LivroID) REFERENCES Livros(LivroID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
