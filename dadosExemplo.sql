@@ -73,3 +73,44 @@ DELETE FROM Emprestimos WHERE DataDevolucao = '2024-12-05';
 DELETE FROM Reservas WHERE ReservaID = 2;
 DELETE FROM Reservas WHERE LivroID = 6;
 
+-- 1. Listar todos os empréstimos de clientes com reservas em aberto
+SELECT e.*
+FROM Emprestimos e
+WHERE e.ClienteID IN (
+    SELECT r.ClienteID
+    FROM Reservas r
+    WHERE r.DataReserva > '2024-11-10'
+);
+
+-- 2. Buscar títulos de livros emprestados mais de uma vez
+SELECT DISTINCT l.Titulo
+FROM Livros l
+WHERE l.LivroID IN (
+    SELECT LivroID 
+    FROM Emprestimos 
+    GROUP BY LivroID 
+    HAVING COUNT(*) > 1
+);
+
+-- 3. Mostrar funcionários que têm "Assistente" no cargo
+SELECT Nome, Cargo
+FROM Funcionarios
+WHERE Cargo LIKE '%Assistente%';
+
+-- 4. Encontrar clientes que ainda não devolveram livros
+SELECT Nome
+FROM Clientes
+WHERE ClienteID IN (
+    SELECT ClienteID 
+    FROM Emprestimos 
+    WHERE DataDevolucao IS NULL
+);
+
+-- 5. Listar livros reservados que têm menos de 3 unidades disponíveis
+SELECT Titulo
+FROM Livros
+WHERE LivroID IN (
+    SELECT LivroID
+    FROM Reservas
+) AND Quantidade < 3;
+
