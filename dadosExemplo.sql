@@ -25,3 +25,8 @@ VALUES
 (1, 1, '2024-11-01', '2024-11-15'),
 (2, 2, '2024-11-05', '2024-11-20'),
 (3, 1, '2024-11-10', NULL); -- Livro ainda não devolvido
+
+-- Inserir dados na tabela Reservas
+INSERT INTO Reservas (LivroID, ClienteID, DataReserva)
+VALUES
+(2, 1, '2024-11-12');
