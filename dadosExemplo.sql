@@ -30,3 +30,24 @@ VALUES
 INSERT INTO Reservas (LivroID, ClienteID, DataReserva)
 VALUES
 (2, 1, '2024-11-12');
+
+-- Atualizar o telefone de um cliente
+UPDATE Clientes SET Telefone = '999888777' WHERE ClienteID = 1;
+
+-- Atualizar o número de livros disponíveis
+UPDATE Livros SET Quantidade = Quantidade - 1 WHERE LivroID = 1 AND Quantidade > 0;
+
+-- Atualizar a data de devolução de um empréstimo
+UPDATE Emprestimos SET DataDevolucao = '2024-11-20' WHERE EmprestimoID = 1;
+
+-- Atualizar o cargo de um funcionário
+UPDATE Funcionarios SET Cargo = 'Gerente' WHERE ID = 1;
+
+-- Remover uma reserva
+DELETE FROM Reservas WHERE ReservaID = 1;
+
+-- Remover um empréstimo
+DELETE FROM Emprestimos WHERE EmprestimoID = 1;
+
+-- Remover um livro
+DELETE FROM Livros WHERE LivroID = 4;
