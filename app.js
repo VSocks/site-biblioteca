@@ -30,6 +30,25 @@ app.post('/cadastro', async (req, res) => {
   });
 });
 
+// Rota para renderizar a página de cadastro de clientes
+app.get('/cadastro_cliente', (req, res) => {
+  res.sendFile(__dirname + '/views/cadastro_cliente.html');
+});
+
+// Rota para processar o cadastro de clientes
+app.post('/cadastro_cliente', async (req, res) => {
+  const { nome, telefone, email, senha } = req.body;
+
+  // Criptografar a senha do cliente
+  const hashedPassword = await bcrypt.hash(senha, 10);
+
+  const sql = 'INSERT INTO Clientes (Nome, Telefone, Email, Senha) VALUES (?, ?, ?, ?)';
+  db.query(sql, [nome, telefone, email, hashedPassword], (err, result) => {
+    if (err) return res.status(500).send('Erro no servidor!');
+    res.send('<h1>Cliente cadastrado com sucesso!</h1><a href="/">Voltar ao início</a>');
+  });
+});
+
 // Rota para renderizar a página de login
 app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/views/login.html');
