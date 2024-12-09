@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Menu</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/script.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Biblioteca</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/script.js" defer></script>
 </head>
 <body>
-  <h1>Bem-vindo ao Menu</h1>
-  <a href="/cadastroLivro">Cadastro de Livros</a>
+  <div class="container">
+    <h1>Menu - Biblioteca</h1>
+    
+    <a href="/cadastroLivro">Cadastro de Livros</a>
 
-  <button id="btnFuncionarios">Exibir Funcionários</button>
-  <button id="btnClientes">Exibir Clientes</button>
-  <button id="btnLivros">Exibir Livros</button>
-  <button id="btnEmprestimos">Exibir Empréstimos</button>
-  <button id="btnReservas">Exibir Reservas</button>
+    <div>
+      <button id="btnFuncionarios">Funcionários</button>
+      <button id="btnClientes">Clientes</button>
+      <button id="btnLivros">Livros</button>
+      <button id="btnEmprestimos">Empréstimos</button>
+      <button id="btnReservas">Reservas</button>
+    </div>
 
-  <div id="resultado"></div>
+    <div id="resultado">
+      <!-- Aqui os dados serão exibidos -->
+    </div>
+  </div>
 </body>
 </html>
