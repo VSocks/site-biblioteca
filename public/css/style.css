@@ -1,123 +1,99 @@
-/* Reset básico para remover margens e preenchimentos padrões */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Corpo do site */
-  body {
-    font-family: 'Courier New', Courier, monospace;  /* Fonte retrô */
-    background-color: #f0f0f0; /* Cor de fundo suave */
-    color: #000000; /* Texto preto */
-    text-align: center; /* Centraliza textos no corpo */
-    margin: 0;
-    padding: 20px;
-  }
-  
-  /* Estilo para o título principal */
-  h1 {
-    font-size: 2rem;
-    color: #990000; /* Vermelho escuro */
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); /* Sombra no texto */
-    margin-bottom: 20px;
-  }
-  
-  /* Container principal com centralização */
-  .container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto; /* Centraliza o container */
-  }
-  
-  /* Estilo para os botões */
-  button {
-    background-color: #0080ff; /* Azul clássico */
-    color: #fff;
-    font-size: 1rem;
-    padding: 10px 20px;
-    margin: 10px;
-    border: 2px solid #0066cc; /* Bordas um pouco mais escuras */
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: bold;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  button:hover {
-    background-color: #0066cc; /* Azul mais escuro no hover */
-    border-color: #004d99; /* Bordas mais escuras */
-  }
-  
-  /* Estilo das tabelas */
+/* Estilo básico da página */
+body {
+  background-color: #121212; /* Fundo escuro */
+  color: #fff; /* Texto branco */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+h1, h2 {
+  font-size: 3em;
+  color: #00ff00; /* Verde neon */
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #222;
+  border: none;
+  color: #fff;
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #fff;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #444;
+  text-shadow: 0 0 20px #fff;
+}
+
+/* Estilo da tabela */
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 1em;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+th {
+  background-color: #222;
+  color: #00ff00;
+  cursor: pointer;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+th:hover {
+  background-color: #444;
+}
+
+td {
+  background-color: #333;
+  color: #ccc;
+}
+
+tr:nth-child(even) td {
+  background-color: #444;
+}
+
+#resultado {
+  margin-top: 20px;
+}
+
+p {
+  color: #ccc;
+  font-size: 1.2em;
+}
+
+/* Estilos adicionais para manter o layout responsivo */
+@media (max-width: 768px) {
   table {
     width: 100%;
-    border-collapse: collapse; /* Elimina os espaços entre as células */
-    margin: 20px auto;
-    background-color: #ffffff; /* Fundo branco */
-    border: 2px solid #000000; /* Borda preta ao redor */
   }
-  
-  th, td {
-    padding: 10px;
-    border: 1px solid #000000; /* Borda preta nas células */
+
+  h1, h2 {
+    font-size: 2em;
   }
-  
-  th {
-    background-color: #4CAF50; /* Cor de fundo verde nos cabeçalhos */
-    color: white;
-    text-transform: uppercase; /* Texto em maiúsculas */
-    font-size: 1.1rem;
-    cursor: pointer;
+
+  button {
+    padding: 12px 25px;
+    font-size: 1em;
   }
-  
-  td {
-    background-color: #f9f9f9;
-  }
-  
-  td:hover {
-    background-color: #eeeeee; /* Cor de fundo mais escura quando o mouse passa */
-  }
-  
-  /* Estilo do formulário */
-  form {
-    background-color: #ffffff; /* Fundo branco */
-    border: 2px solid #000000;
-    padding: 20px;
-    margin: 20px auto;
-    width: 50%;
-    max-width: 600px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #000000;
-    background-color: #f9f9f9;
-    font-size: 1rem;
-  }
-  
-  input[type="submit"] {
-    background-color: #0080ff;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  input[type="submit"]:hover {
-    background-color: #0066cc;
-  }
-  
-  /* Estilo de mensagem */
-  #resultado {
-    margin-top: 20px;
-  }
-  
-  p {
-    font-size: 1rem;
-    color: #333;
-  }  
+}
