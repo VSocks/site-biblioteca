@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
 
   try {
     // Criptografar a senha
-    const hashedPassword = await bcrypt.hash(senha, 10);
+    const hashedPassword = await bcrypt.hash(senha, 15);
     const sql = 'INSERT INTO Clientes (Nome, Telefone, Email, Senha) VALUES (?, ?, ?, ?)';
     db.query(sql, [nome, telefone, email, hashedPassword], (err) => {
       if (err) return res.status(500).send('Erro no servidor!');
