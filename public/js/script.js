@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchData('/dados/reservas');
   });
 });
-
 function fetchData(url) {
   fetch(url)
     .then(response => response.json())
@@ -77,17 +76,27 @@ function sortTable(column) {
   // Verifica a direção da ordenação
   let direction = currentSort.direction === 'desc' ? 1 : -1;
 
-  // Ordena os dados de acordo com a coluna
+  // Função para comparar as células de forma alfanumérica
+  const compare = (aText, bText) => {
+    // Caso os textos sejam números, converte para número para comparação
+    const aNum = parseFloat(aText);
+    const bNum = parseFloat(bText);
+
+    if (!isNaN(aNum) && !isNaN(bNum)) {
+      // Se ambos são números, compara numericamente
+      return aNum - bNum;
+    }
+    
+    // Caso contrário, compara alfabeticamente
+    return aText.localeCompare(bText, undefined, { sensitivity: 'base' });
+  };
+
+  // Ordena as linhas com base na comparação alfanumérica
   rows.sort((a, b) => {
     const aText = a.cells[Object.keys(a.cells).find(key => table.rows[0].cells[key].innerText === column)].innerText;
     const bText = b.cells[Object.keys(b.cells).find(key => table.rows[0].cells[key].innerText === column)].innerText;
 
-    if (aText < bText) {
-      return -direction;
-    } else if (aText > bText) {
-      return direction;
-    }
-    return 0;
+    return direction * compare(aText, bText);
   });
 
   // Reverte a direção para a próxima vez que a coluna for clicada

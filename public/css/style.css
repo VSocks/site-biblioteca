@@ -6,8 +6,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: top;
   height: 100vh;
   flex-direction: column;
   text-align: center;
@@ -16,7 +15,6 @@ body {
 h1, h2 {
   font-size: 3em;
   color: #00ff00; /* Verde neon */
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
   margin-bottom: 20px;
 }
 
@@ -29,7 +27,6 @@ button {
   font-size: 1.2em;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow: 0 0 10px #fff;
   border-radius: 10px;
 }
 
@@ -57,7 +54,6 @@ th {
   background-color: #222;
   color: #00ff00;
   cursor: pointer;
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
 
 th:hover {
@@ -80,20 +76,4 @@ tr:nth-child(even) td {
 p {
   color: #ccc;
   font-size: 1.2em;
-}
-
-/* Estilos adicionais para manter o layout responsivo */
-@media (max-width: 768px) {
-  table {
-    width: 100%;
-  }
-
-  h1, h2 {
-    font-size: 2em;
-  }
-
-  button {
-    padding: 12px 25px;
-    font-size: 1em;
-  }
 }
