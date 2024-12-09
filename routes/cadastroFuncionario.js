@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Página de cadastro
 router.get('/', (req, res) => {
-  res.sendFile(__dirname.replace('routes', 'views') + '/cadastro.html');
+  res.sendFile(__dirname.replace('routes', 'views') + '/cadastroFuncionario.html');
 });
 
 // Processar cadastro
