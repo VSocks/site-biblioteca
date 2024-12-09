@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cadastroClienteRoutes = require('./routes/cadastroCliente'); // Alteração da branch feature/cadastro_cliente
 const cadastroFuncionarioRoutes = require('./routes/cadastroFuncionario');
+const cadastroLivroRoutes = require('./routes/cadastroLivro');
 const loginRoutes = require('./routes/login');
 const db = require('./database');
 
@@ -22,6 +23,7 @@ app.get('/menu', (req, res) => {
 // Rotas de Cadastro e Login
 app.use('/cadastroCliente', cadastroClienteRoutes); // Alteração da branch feature/cadastro_cliente
 app.use('/cadastroFuncionario', cadastroFuncionarioRoutes);
+app.use('/cadastroLivro', cadastroLivroRoutes);
 app.use('/login', loginRoutes);
 
 // Iniciar o servidor
