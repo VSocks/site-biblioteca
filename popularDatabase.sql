@@ -30,5 +30,5 @@ VALUES
 INSERT INTO Reservas (LivroID, ClienteID, DataReserva)
 VALUES
 (2, 1, '2024-11-12'),
-(6, 1, '2024-11-17'),
+(3, 1, '2024-11-17'),
 (4, 3, '2024-11-18');
