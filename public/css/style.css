@@ -77,3 +77,30 @@ p {
   color: #ccc;
   font-size: 1.2em;
 }
+
+/* Estilo para os botões à direita */
+.right-buttons {
+  position: absolute;
+  right: 20px;
+  top: 120px; /* Ajuste a altura conforme necessário */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.right-buttons button {
+  background-color: #222;
+  border: none;
+  color: #fff;
+  padding: 15px 30px;
+  margin: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.right-buttons button:hover {
+  background-color: #444;
+  text-shadow: 0 0 20px #fff;
+}
