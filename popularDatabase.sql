@@ -67,3 +67,27 @@ VALUES
 (8, 9, '2024-08-20'),
 (9, 10, '2024-09-25'),
 (10, 1, '2024-10-30');
+
+-- Inserir 10 exemplos na tabela Devoluções
+INSERT INTO Devolucoes (EmprestimoID, DataDevolucao, CondicaoLivro)
+VALUES 
+(4, '2024-12-01', 'Bom'),
+(10, '2024-12-02', 'Excelente'),
+(2, '2024-12-03', 'Danificado'),
+
+(3, '2024-12-09', 'Danificado'),
+(1, '2024-12-10', 'Bom');
+
+ALTER TABLE Livros ADD COLUMN Disponiveis INT NOT NULL DEFAULT 0;
+
+UPDATE Livros
+SET Disponiveis = Quantidade - (
+    SELECT COUNT(*)
+    FROM Emprestimos
+    WHERE Emprestimos.LivroID = Livros.LivroID
+    AND NOT EXISTS (
+        SELECT 1
+        FROM Devolucoes
+        WHERE Devolucoes.EmprestimoID = Emprestimos.EmprestimoID
+    )
+);

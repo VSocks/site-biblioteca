@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('btnReservas').addEventListener('click', function () {
     fetchData('/dados/reservas');
   });
+
+  document.getElementById('btnDevolucoes').addEventListener('click', function () {
+    fetchData('dados/devolucoes');
+  })
 });
 
 function fetchData(url) {

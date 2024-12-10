@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
     const sql = 'INSERT INTO Funcionarios (Nome, Telefone, Cargo, DataAdmissao, Email, Senha) VALUES (?, ?, ?, ?, ?, ?)';
     db.query(sql, [nome, telefone, cargo, dataAdmissao, email, hashedPassword], (err) => {
       if (err) return res.status(500).send('Erro no servidor!');
-      res.send('<h1>Cadastro realizado com sucesso!</h1><a href="/login">Ir para Login</a>');
+      res.send('Cadastro realizado com sucesso!<br><a href="/login"><button>Ir para Login</button></a>');
     });
   } catch (err) {
     res.status(500).send('Erro no servidor!');

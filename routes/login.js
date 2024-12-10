@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
   db.query(sql, [email], async (err, results) => {
     if (err) return res.status(500).send('Erro no servidor!');
     if (results.length === 0 || !(await bcrypt.compare(senha, results[0].Senha))) {
-      return res.status(401).send('<h1>Email ou senha inválidos!</h1>');
+      return res.status(401).send('Email ou senha inválidos!<br><a href="/login"><button>Voltar</button></a>');
     }
     res.redirect('/menu');
   });

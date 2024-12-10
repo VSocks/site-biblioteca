@@ -60,3 +60,14 @@ CREATE TABLE Reservas (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+-- Criar a tabela Devoluções
+CREATE TABLE Devolucoes (
+    DevolucaoID INT AUTO_INCREMENT PRIMARY KEY,
+    EmprestimoID INT NOT NULL,
+    DataDevolucao DATE NOT NULL,
+    CondicaoLivro VARCHAR(255) NOT NULL,
+    FOREIGN KEY (EmprestimoID) REFERENCES Emprestimos(EmprestimoID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
