@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cadastroClienteRoutes = require('./routes/cadastroCliente'); // Alteração da branch feature/cadastro_cliente
+const cadastroClienteRoutes = require('./routes/cadastroCliente');
 const cadastroFuncionarioRoutes = require('./routes/cadastroFuncionario');
 const cadastroLivroRoutes = require('./routes/cadastroLivro');
 const emprestimoRouter = require('./routes/emprestimo');
 const reservaRouter = require('./routes/reserva');
 const loginRoutes = require('./routes/login');
-const menuRoutes = require('./routes/menu');  // Importando as rotas do menu
+const menuRoutes = require('./routes/menu');
+const devolucaoRoutes = require('./routes/devolucao');
 const db = require('./database');
 
 const app = express();
@@ -25,12 +26,13 @@ app.get('/menu', (req, res) => {
 });
 
 // Rotas de Cadastro e Login
-app.use('/cadastroCliente', cadastroClienteRoutes); // Alteração da branch feature/cadastro_cliente
+app.use('/cadastroCliente', cadastroClienteRoutes);
 app.use('/cadastroFuncionario', cadastroFuncionarioRoutes);
 app.use('/cadastroLivro', cadastroLivroRoutes);
 app.use('/emprestimo', emprestimoRouter);
 app.use('/reserva', reservaRouter);
 app.use('/login', loginRoutes);
+app.use('/devolucao', devolucaoRoutes);
 app.use(menuRoutes);
 
 // Iniciar o servidor

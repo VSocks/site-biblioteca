@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
       console.error(err);
       return res.status(500).send('Erro ao processar a reserva.');
     }
-    res.send('Reserva realizada com sucesso!<a href="/menu">Voltar ao menu</a>');
+    res.send('Reserva realizada com sucesso!<a href="/menu"><button>Voltar ao menu<button></a>');
   });
 });
 

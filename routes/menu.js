@@ -47,4 +47,13 @@ router.get('/dados/reservas', (req, res) => {
   });
 });
 
+// Rota para obter os dados de Devoluções
+router.get('/dados/devolucoes', (req, res) => {
+  const sql = 'SELECT * FROM Devolucoes'; // Supondo que a tabela Reservas já exista no banco
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json({ error: 'Erro no servidor' });
+    res.json(results);
+  });
+});
+
 module.exports = router;

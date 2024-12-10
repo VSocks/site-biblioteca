@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
         console.error('Erro ao cadastrar livro:', err);
         return res.status(500).send('Erro ao cadastrar livro.');
       }
-      res.send('<h1>Livro cadastrado com sucesso!</h1><a href="/menu">Voltar ao Menu</a>');
+      res.send('Livro cadastrado com sucesso!<br><a href="/menu"><button>Voltar ao Menu</button></a>');
     }
   );
 });
