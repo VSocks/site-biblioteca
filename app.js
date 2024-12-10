@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cadastroClienteRoutes = require('./routes/cadastroCliente'); // Alteração da branch feature/cadastro_cliente
 const cadastroFuncionarioRoutes = require('./routes/cadastroFuncionario');
 const cadastroLivroRoutes = require('./routes/cadastroLivro');
+const emprestimoRoutes = require('./routes/emprestimo');
+const reservaRoutes = require('./routes/reserva');
 const loginRoutes = require('./routes/login');
 const menuRoutes = require('./routes/menu');  // Importando as rotas do menu
 const db = require('./database');
@@ -26,6 +28,8 @@ app.get('/menu', (req, res) => {
 app.use('/cadastroCliente', cadastroClienteRoutes); // Alteração da branch feature/cadastro_cliente
 app.use('/cadastroFuncionario', cadastroFuncionarioRoutes);
 app.use('/cadastroLivro', cadastroLivroRoutes);
+app.use('/emprestimo', emprestimoRoutes);
+app.use('/reserva', reservaRoutes);
 app.use('/login', loginRoutes);
 app.use(menuRoutes);
 
