@@ -1,32 +1,27 @@
 const express = require('express');
-const db = require('../database'); // Certifique-se de que o arquivo de conexão com o banco está correto
+const db = require('../database');
 const router = express.Router();
 
-// Página de cadastro
 router.get('/', (req, res) => {
   res.sendFile(__dirname.replace('routes', 'views') + '/reserva.html');
 });
 
-// Processar cadastro de livros
+// Rota para processar o formulário de reserva
 router.post('/', (req, res) => {
-  const { livroID, clienteID, dataReserva } = req.body;
+  const { clienteID, livroID } = req.body;
+  const dataReserva = new Date().toISOString().slice(0, 10); // Data atual no formato YYYY-MM-DD
 
   const sql = `
     INSERT INTO Reservas (LivroID, ClienteID, DataReserva)
     VALUES (?, ?, ?)
   `;
-
-  db.query(
-    sql,
-    [livroID, clienteID, dataReserva],
-    (err) => {
-      if (err) {
-        console.error('Erro ao realizar reserva:', err);
-        return res.status(500).send('Erro ao realizar reserva.');
-      }
-      res.send('<h1>Reserva realizado com sucesso!</h1><a href="/menu">Voltar ao Menu</a>');
+  db.query(sql, [livroID, clienteID, dataReserva], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Erro ao processar a reserva.');
     }
-  );
+    res.send('Reserva realizada com sucesso!<a href="/menu">Voltar ao menu</a>');
+  });
 });
 
 module.exports = router;

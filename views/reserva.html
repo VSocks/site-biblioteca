@@ -1,25 +1,25 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
-  <title>Reserva</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realizar Reserva</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
-  <h1>Reserva</h1>
-  <form action="/reserva" method="POST">
-    <label for="livroID">ID do Livro:</label>
-    <input type="number" id="livroID" required><br>
-    <label for="clienteID">ID do Cliente:</label>
-    <input type="number" id ="clienteID" required><br>
-    <label for="dataReserva">Data de Reserva:</label>
-    <input type="date" id="dataReserva" required><br>
-    <button type="submit">Realizar Reserva</button>
-  </form>
-  <a href="/menu"><button>Voltar ao Menu</button></a>
-  <a href="/"><button>Tela Inicial</button></a>
-</body>
+  <div class="container">
+    <h1>Realizar Reserva</h1>
+    <form id="reservaForm" method="POST" action="/reserva">
+      <label for="clienteID">ID do Cliente:</label>
+      <input type="number" id="clienteID" name="clienteID" required><br>
+      
+      <label for="livroID">ID do Livro:</label>
+      <input type="number" id="livroID" name="livroID" required><br>
 
+      <button type="submit">Confirmar Reserva</button><br>
+    </form>
+    <a href="/menu"><button>Voltar ao Menu</button></a><br>
+    <a href="/"><button>Tela Inicial</button></a>  </div>
+</body>
 </html>
