@@ -91,29 +91,3 @@ SET Disponiveis = Quantidade - (
         WHERE Devolucoes.EmprestimoID = Emprestimos.EmprestimoID
     )
 );
-
-DELIMITER //
-
-CREATE TRIGGER AtualizarDisponiveisEmprestimo
-AFTER INSERT ON Emprestimos
-FOR EACH ROW
-BEGIN
-  UPDATE Livros
-  SET Disponiveis = Disponiveis - 1
-  WHERE LivroID = NEW.LivroID;
-END //
-
-DELIMITER ;
-
-DELIMITER //
-
-CREATE TRIGGER AtualizarDisponiveisDevolucao
-AFTER INSERT ON Devolucoes
-FOR EACH ROW
-BEGIN
-  UPDATE Livros
-  SET Disponiveis = Disponiveis + 1
-  WHERE LivroID = (SELECT LivroID FROM Emprestimos WHERE EmprestimoID = NEW.EmprestimoID);
-END //
-
-DELIMITER ;
