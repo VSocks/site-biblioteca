@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
         return res.status(500).send('Erro ao processar o empréstimo.');
       }
       res.send(
-        `Empréstimo realizado com sucesso! A data de devolução é ${dataDevolucaoFormatada}<br><a href="/menu"><button>Voltar ao menu<button></a>.`
+        `Empréstimo realizado com sucesso! A data de devolução é ${dataDevolucaoFormatada}.<br><a href="/menu"><button>Voltar ao menu</button></a>`
       );
     }
   );

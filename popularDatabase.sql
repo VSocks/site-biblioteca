@@ -74,10 +74,46 @@ VALUES
 (4, '2024-12-01', 'Bom'),
 (10, '2024-12-02', 'Excelente'),
 (2, '2024-12-03', 'Danificado'),
-(5, '2024-12-04', 'Bom'),
-(7, '2024-12-05', 'Excelente'),
-(8, '2024-12-06', 'Danificado'),
-(6, '2024-12-07', 'Bom'),
-(9, '2024-12-08', 'Excelente'),
+
 (3, '2024-12-09', 'Danificado'),
 (1, '2024-12-10', 'Bom');
+
+ALTER TABLE Livros ADD COLUMN Disponiveis INT NOT NULL DEFAULT 0;
+
+UPDATE Livros
+SET Disponiveis = Quantidade - (
+    SELECT COUNT(*)
+    FROM Emprestimos
+    WHERE Emprestimos.LivroID = Livros.LivroID
+    AND NOT EXISTS (
+        SELECT 1
+        FROM Devolucoes
+        WHERE Devolucoes.EmprestimoID = Emprestimos.EmprestimoID
+    )
+);
+
+DELIMITER //
+
+CREATE TRIGGER AtualizarDisponiveisEmprestimo
+AFTER INSERT ON Emprestimos
+FOR EACH ROW
+BEGIN
+  UPDATE Livros
+  SET Disponiveis = Disponiveis - 1
+  WHERE LivroID = NEW.LivroID;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER AtualizarDisponiveisDevolucao
+AFTER INSERT ON Devolucoes
+FOR EACH ROW
+BEGIN
+  UPDATE Livros
+  SET Disponiveis = Disponiveis + 1
+  WHERE LivroID = (SELECT LivroID FROM Emprestimos WHERE EmprestimoID = NEW.EmprestimoID);
+END //
+
+DELIMITER ;
