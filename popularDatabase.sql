@@ -71,13 +71,13 @@ VALUES
 -- Inserir 10 exemplos na tabela Devoluções
 INSERT INTO Devolucoes (EmprestimoID, DataDevolucao, CondicaoLivro)
 VALUES 
-(1, '2024-12-01', 'Bom'),
-(2, '2024-12-02', 'Excelente'),
-(3, '2024-12-03', 'Danificado'),
-(4, '2024-12-04', 'Bom'),
-(5, '2024-12-05', 'Excelente'),
-(6, '2024-12-06', 'Danificado'),
-(7, '2024-12-07', 'Bom'),
-(8, '2024-12-08', 'Excelente'),
-(9, '2024-12-09', 'Danificado'),
-(10, '2024-12-10', 'Bom');
+(4, '2024-12-01', 'Bom'),
+(10, '2024-12-02', 'Excelente'),
+(2, '2024-12-03', 'Danificado'),
+(5, '2024-12-04', 'Bom'),
+(7, '2024-12-05', 'Excelente'),
+(8, '2024-12-06', 'Danificado'),
+(6, '2024-12-07', 'Bom'),
+(9, '2024-12-08', 'Excelente'),
+(3, '2024-12-09', 'Danificado'),
+(1, '2024-12-10', 'Bom');
