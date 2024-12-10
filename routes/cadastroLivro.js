@@ -9,15 +9,16 @@ router.get('/', (req, res) => {
 
 // Processar cadastro de livros
 router.post('/', (req, res) => {
-  const { titulo, autor, genero, anoPublicacao, editora, quantidade, disponiveis } = req.body;
+  const { titulo, autor, genero, anoPublicacao, editora, quantidade } = req.body;
+  const disponiveis = quantidade;
 
-  const sql = `
+  const sqlCadastrarLivro = `
     INSERT INTO Livros (Titulo, Autor, Genero, AnoPublicacao, Editora, Quantidade, Disponiveis)
     VALUES (?, ?, ?, ?, ?, ?, ?)
   `;
 
   db.query(
-    sql,
+    sqlCadastrarLivro,
     [titulo, autor, genero, anoPublicacao, editora, quantidade, disponiveis],
     (err) => {
       if (err) {
